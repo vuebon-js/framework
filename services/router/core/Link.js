@@ -18,10 +18,6 @@ export class Link extends Routable
         this.options.meta.componentName = componentName;
         this.options.path = fixSlash(this.options.meta.prefix.concat('/', path));
         this.options.component = this.componentResolver(this.options.meta.componentDir);
-        /*this.options.component = () => import(
-            /!* webpackChunkName: "[request]" *!/
-            `@view/pages${this.options.meta.componentDir}.vue`
-        );*/
     }
 
     namespace(path)
@@ -29,10 +25,6 @@ export class Link extends Routable
         this.options.meta.namespace += this.options.meta.namespace.length ? '/'.concat(path) : path;
         this.options.meta.componentDir = fixSlash(this.options.meta.namespace.concat('/', this.options.meta.componentName));
         this.options.component = this.componentResolver(this.options.meta.componentDir);
-        this.options.component = () => import(
-            /* webpackChunkName: "[request]" */
-            `@view/pages${this.options.meta.componentDir}.vue`
-        );
 
         return this;
     }
@@ -55,10 +47,4 @@ export class Link extends Routable
 
         return this;
     }
-
-    /*resolveComponent(path)
-    {
-        return this.resolveComponent();
-        /!*return () => import(`@view/pages${path}.vue` /!* webpackChunkName: '[request]' *!/);*!/
-    }*/
 }

@@ -1,6 +1,7 @@
-import readonly from "../../utils/decorators";
-import {User}   from "./User"
-import {config, observable} from "../../utils/helpers";
+import readonly   from "../../utils/decorators";
+import {User}     from "./User"
+import {config}   from "../../utils/helpers";
+import {reactive} from "vue"
 
 export class Auth {
     #tokens = null;
@@ -12,7 +13,7 @@ export class Auth {
         this.#loader = $loader;
         this.#router = $router;
         this.#storage = $storage;
-        this.state = observable({
+        this.state = reactive({
             user: new User(),
         })
         this.#addStorageListener();

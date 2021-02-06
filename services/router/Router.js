@@ -1,11 +1,11 @@
 import {fixSlash} from './core/utils';
 import {Link}     from "./core/Link";
 import {Redirect} from "./core/Redirect";
-import {config}   from "../../utils/helpers";
+import {reactive} from "vue";
 
 export class Router {
     constructor() {
-        this.routes = [];
+        this.routes = reactive([]);
         this.groups = [];
         this.componentResolver = () => null;
     }

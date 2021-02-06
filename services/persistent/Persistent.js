@@ -1,9 +1,9 @@
-import {make} from "../../utils/helpers";
+import {reactive} from 'vue';
 
 export class Persistent
 {
     constructor(items) {
-        this.items = make('vue').observable({...items});
+        this.items = reactive({...items});
     }
 
     get(key) {
@@ -24,7 +24,7 @@ export class Persistent
 
     set(key, value) {
         value = this._convertStr(value);
-        make('vue').set(this.items, key, value);
+        this.items[key] = value;
         localStorage.setItem(key, value);
         return this;
     }
@@ -34,13 +34,13 @@ export class Persistent
     }
 
     remove(key) {
-        make('vue').delete(this.items, key);
+        delete this.items[key];
         localStorage.removeItem(key);
         return this;
     }
 
     clear() {
-        this.items = null;
+        this.items = reactive({});
         localStorage.clear();
         return this;
     }

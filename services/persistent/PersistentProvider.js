@@ -1,20 +1,20 @@
 import {Persistent}   from "./Persistent"
-import {BaseProvider} from "../../core/BaseProvider";
 
-export default class PersistentProvider extends BaseProvider {
+export default class PersistentProvider {
+    constructor(App) {
+        this.App = App;
+    }
+
     register() {
         this.App.singleton('persistent', () => {
             return new Proxy(new Persistent(localStorage), this.#getProxyHandler())
         })
     }
 
-    boot(Vue) {
-        Vue.prototype.$persistent = this.App.resolve('persistent');
-        Vue.mixin({
-            data: () => ({
-                vuebon_persistent: this.App.resolve('persistent').items
-            })
-        })
+    boot(vm) {
+        vm.config.globalProperties.$persistent  = this.App.resolve('persistent');
+        vm.config.globalProperties.$persistents = this.App.resolve('persistent').items;
+
     }
 
     #getProxyHandler() {

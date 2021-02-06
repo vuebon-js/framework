@@ -1,17 +1,20 @@
 import {Router}       from "./Router";
-import {BaseProvider} from "../../core/BaseProvider";
 import {AuthMacro}    from "./auth/macro";
 
-export default class RouterProvider extends BaseProvider {
+export default class RouterProvider {
+    constructor(App) {
+        this.App = App;
+    }
+
     register() {
-        this.App.singleton('router', function () {
+        this.App.singleton('router', function ()  {
             return new Router();
         })
     }
 
     boot() {
+        new AuthMacro().load()
         this.#loadDefaultRoutes();
-        new AuthMacro().make()
     }
 
     #loadDefaultRoutes() {

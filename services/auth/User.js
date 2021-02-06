@@ -1,14 +1,13 @@
 import readonly from "../../utils/decorators"
-import {make}   from "../../utils/helpers";
 
 export class User
 {
     @readonly create(props) {
-        for (let [k, v] of Object.entries(props)) make('vue').set(this, k, v);
+        for (let [key, val] of Object.entries(props)) this[key] = val;
     }
 
     @readonly destroy() {
-        Object.keys(this).forEach(key => make('vue').delete(this, key))
+        Object.keys(this).forEach(key => delete this[key])
     }
 
     @readonly exists() {

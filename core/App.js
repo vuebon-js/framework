@@ -21,19 +21,19 @@ export class App extends Container {
         return App.#instance;
     }
 
-    constructor({config, providers, Vue}) {
+    constructor({config, providers, vm}) {
         super();
 
-        this.createBaseInstances(Vue)
+        this.createBaseInstances(vm)
             .loadConfig(config)
             .prepareProviders([ExceptionProvider].concat(providers));
 
         window.vuebon = this;
     }
 
-    createBaseInstances(VueGlobal) {
+    createBaseInstances(vm) {
         this.instance('app', this);
-        this.instance('vue', VueGlobal);
+        this.instance('vue', vm);
 
         return this;
     }

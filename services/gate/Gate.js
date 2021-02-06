@@ -1,10 +1,10 @@
-import {observable} from "../../utils/helpers";
+import {reactive} from "vue";
 
 export class Gate {
     #auth; 
 
     constructor(auth, policies = {}) {
-        this.policies = observable(policies);
+        this.policies = reactive(policies);
         this.#auth = auth;
     }
     define(policy, callback) {

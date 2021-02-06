@@ -1,7 +1,10 @@
-import {Auth}         from "../../services/auth/Auth"
-import {BaseProvider} from "../../core/BaseProvider";
+import {Auth} from "../../services/auth/Auth"
 
-export default class AuthProvider extends BaseProvider {
+export default class AuthProvider {
+    constructor(App) {
+        this.App = App;
+    }
+
     register() {
         this.App.singleton('auth', function () {
             return new Auth(
@@ -10,8 +13,8 @@ export default class AuthProvider extends BaseProvider {
         });
     }
 
-    boot(Vue) {
-        Object.assign(Vue.prototype, { 
+    boot(vm) {
+        Object.assign(vm.config.globalProperties, {
             $auth: this.App.resolve('auth'),
             $user: this.App.resolve('auth').user
         });

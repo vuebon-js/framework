@@ -1,3 +1,5 @@
+import {reactive} from 'vue';
+
 export function app() {
     return require('../core/App').App.make();
 }
@@ -45,5 +47,5 @@ export function toUpperCaseFirst(value) {
 }
 
 export function observable(obj) {
-    return make('vue').observable(obj);
+    return reactive(obj);
 }

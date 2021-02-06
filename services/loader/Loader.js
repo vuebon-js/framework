@@ -1,8 +1,8 @@
-import {observable} from "../../utils/helpers";
+import {reactive} from "vue";
 
 export default class Loader {
     constructor(props = {}) {
-        this.state = observable({
+        this.state = reactive({
             visible: false,
             enterTimeout: props.enterTimeout || 0,
             leaveTimeout: props.leaveTimeout || 0

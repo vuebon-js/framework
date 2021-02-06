@@ -1,6 +1,6 @@
 {
   "name": "@vuebon/framework",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Framework for Vue",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuebon-js/framework.git"
+    "url": "git+https://github.com/vuebon/framework.git"
   },
   "keywords": [
     "Vue",
@@ -17,7 +17,7 @@
   "author": "Serter Serbest",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vuebon-js/framework/issues"
+    "url": "https://github.com/vuebon/framework/issues"
   },
-  "homepage": "https://github.com/vuebon-js/framework#readme"
+  "homepage": "https://github.com/vuebon/framework#readme"
 }

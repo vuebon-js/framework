@@ -2,13 +2,11 @@ import {toUpperCaseFirst, make} from "../../../utils/helpers";
 
 export class AuthMacro
 {
-    constructor()
-    {
+    constructor() {
         this.optionNames = ['login', 'register'];
     }
 
-    getComponentOptionsFor(key)
-    {
+    getComponentOptionsFor(key) {
         return {
             path: this.options?.[key]?.path ?? '/' + key,
             component: this.options?.[key]?.filename ?? toUpperCaseFirst(key),
@@ -18,8 +16,7 @@ export class AuthMacro
         }
     }
 
-    createRoutes(Route)
-    {
+    createRoutes(Route) {
         this.optionNames.forEach(name => {
             const options = this.getComponentOptionsFor(name);
             Route.link(options.path, options.component)
@@ -29,8 +26,7 @@ export class AuthMacro
         })
     }
 
-    make()
-    {
+    load() {
         make('router').macro('auth', (Route, options) => {
             this.options = options;
             this.createRoutes(Route);
