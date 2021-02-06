@@ -1,0 +1,23 @@
+{
+  "name": "@vuebon/framework",
+  "version": "1.0.0",
+  "description": "Framework for Vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuebon-js/framework.git"
+  },
+  "keywords": [
+    "Vue",
+    "Framework"
+  ],
+  "author": "Serter Serbest",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vuebon-js/framework/issues"
+  },
+  "homepage": "https://github.com/vuebon-js/framework#readme"
+}
